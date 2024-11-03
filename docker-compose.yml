@@ -1,0 +1,38 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: prod
+      args: 
+        - EXPOSE_LISTEN_PORT=3000
+    container_name: app-container
+    environment:
+      - APP_LISTEN_ADDRESS=0.0.0.0
+      - APP_LISTEN_PORT=3000
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=database
+    ports:
+      - 3000:3000
+    depends_on:
+      postgres:
+        condition: service_started
+  postgres:
+    image: postgres:17
+    restart: always
+    container_name: postgres-container
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=database
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
