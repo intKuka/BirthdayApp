@@ -32,7 +32,7 @@ For tested purposes, all tables are seeded with randomly generated data.
 1. Clone the repository
 
 ```
-git clone
+git clone git@github.com:intKuka/BirthdayApp.git
 ```
 
 #####
@@ -55,6 +55,6 @@ docker compose up
 
 Application has an endpoint to get all users
 
-```GET
-http://localhost:3000
+```
+curl -XGET 'http://localhost:3000'
 ```
