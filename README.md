@@ -40,7 +40,7 @@ git clone git@github.com:intKuka/BirthdayApp.git
 2. Enter to working directory
 
 ```
-cd app
+cd BirthdayApp
 ```
 
 #####
